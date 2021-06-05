@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AppVaksin_07.ServiceKonfirmasiVaksin.Data_Pasien>
+
+@{
+    ViewBag.Title = "vaksinDigunakan";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<section id="home" class="w3l-banner py-5">
+    <div class="banner-image">
+
+    </div>
+    <div class="banner-content">
+        <div class="container pt-5 pb-md-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 pt-md-0 pt-4">
+                    <h4 class="mb-lg-15 mb-3 title"><span class="typed-text"></span><span>Vaksin yang sudah digunakan di Rumah Sakit</span></h4>
+                    <div class="mt-md-8 mt-4 mb-lg-0 mb-4">
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.id_pasien)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.id_vaksin)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.nik_pasien)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.no_rekam_medis)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.id_pasien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.id_vaksin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nik_pasien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.no_rekam_medis)
+                                    </td>
+                                   
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

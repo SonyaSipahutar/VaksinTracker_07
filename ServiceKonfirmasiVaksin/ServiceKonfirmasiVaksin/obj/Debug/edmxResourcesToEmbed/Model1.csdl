@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vaksin_07Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Data_Pasien">
+    <Key>
+      <PropertyRef Name="id_pasien" />
+    </Key>
+    <Property Name="id_pasien" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_vaksin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="no_rekam_medis" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nik_pasien" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="VaksinData" Relationship="Self.FK__Data_Pasi__id_va__5165187F" FromRole="Data_Pasien" ToRole="VaksinDatas" />
+  </EntityType>
+  <EntityType Name="VaksinData">
+    <Key>
+      <PropertyRef Name="no_register" />
+    </Key>
+    <Property Name="no_register" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tanggal_dibuat" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Data_Pasien" Relationship="Self.FK__Data_Pasi__id_va__5165187F" FromRole="VaksinDatas" ToRole="Data_Pasien" />
+  </EntityType>
+  <Association Name="FK__Data_Pasi__id_va__5165187F">
+    <End Role="VaksinDatas" Type="Self.VaksinData" Multiplicity="1" />
+    <End Role="Data_Pasien" Type="Self.Data_Pasien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VaksinDatas">
+        <PropertyRef Name="no_register" />
+      </Principal>
+      <Dependent Role="Data_Pasien">
+        <PropertyRef Name="id_vaksin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vaksin07_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Data_Pasien" EntityType="Self.Data_Pasien" />
+    <EntitySet Name="VaksinDatas" EntityType="Self.VaksinData" />
+    <AssociationSet Name="FK__Data_Pasi__id_va__5165187F" Association="Self.FK__Data_Pasi__id_va__5165187F">
+      <End Role="VaksinDatas" EntitySet="VaksinDatas" />
+      <End Role="Data_Pasien" EntitySet="Data_Pasien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

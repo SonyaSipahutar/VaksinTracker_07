@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vaksin_07Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Data_Pasien">
+    <Key>
+      <PropertyRef Name="id_pasien" />
+    </Key>
+    <Property Name="id_pasien" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_vaksin" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="no_rekam_medis" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nik_pasien" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VaksinDatas">
+    <Key>
+      <PropertyRef Name="no_register" />
+    </Key>
+    <Property Name="no_register" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="tanggal_dibuat" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Data_Pasi__id_va__5165187F">
+    <End Role="VaksinDatas" Type="Self.VaksinDatas" Multiplicity="1" />
+    <End Role="Data_Pasien" Type="Self.Data_Pasien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VaksinDatas">
+        <PropertyRef Name="no_register" />
+      </Principal>
+      <Dependent Role="Data_Pasien">
+        <PropertyRef Name="id_vaksin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vaksin_07ModelStoreContainer">
+    <EntitySet Name="Data_Pasien" EntityType="Self.Data_Pasien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VaksinDatas" EntityType="Self.VaksinDatas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Data_Pasi__id_va__5165187F" Association="Self.FK__Data_Pasi__id_va__5165187F">
+      <End Role="VaksinDatas" EntitySet="VaksinDatas" />
+      <End Role="Data_Pasien" EntitySet="Data_Pasien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

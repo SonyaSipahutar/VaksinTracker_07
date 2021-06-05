@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:57136/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:57136/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:57136/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiceRegistrasiVaksin" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetVaksin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVaksin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetVaksin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVaksinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertVaksin_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVaksin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertVaksin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertVaksinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateVaksin_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVaksin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateVaksin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVaksinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteVaksin_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVaksin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteVaksin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVaksinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetVaksin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetVaksin" message="tns:IService1_GetVaksin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetVaksinResponse" message="tns:IService1_GetVaksin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertVaksin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertVaksin" message="tns:IService1_InsertVaksin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertVaksinResponse" message="tns:IService1_InsertVaksin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVaksin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateVaksin" message="tns:IService1_UpdateVaksin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateVaksinResponse" message="tns:IService1_UpdateVaksin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVaksin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteVaksin" message="tns:IService1_DeleteVaksin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteVaksinResponse" message="tns:IService1_DeleteVaksin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataById" message="tns:IService1_GetDataById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataByIdResponse" message="tns:IService1_GetDataById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVaksin">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetVaksin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertVaksin">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertVaksin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVaksin">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateVaksin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVaksin">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteVaksin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:57136/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

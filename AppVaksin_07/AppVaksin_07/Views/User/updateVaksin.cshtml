@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "updateVaksin";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<section id="home" class="w3l-banner py-5">
+    <div class="banner-image">
+
+    </div>
+    <div class="banner-content">
+        <div class="container pt-5 pb-md-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 pt-md-0 pt-4">
+                    
+                    
+                        <form method="post" action="@Url.Action("updateVaksin")">
+
+                            <div class="one-frm">
+                                Nomor Register Vaksin
+                                <input type="text" name="no_register" value="@ViewBag.data.no_register" class="form-control" required="" />
+                            </div>
+                            <div class="one-frm">
+                                Tanggal Dibuat:
+                                <input type="datetime-local" value="@ViewBag.data.taggal_dibuat" class="form-control" name="tanggal_dibuat" required="">
+                            </div>
+                            <div class="one-frm">
+                                <input type="submit" value="Update" class="btn btn-info" />
+                                @Html.ActionLink("Back", "Vaksin", "User", new { @class = "btn btn-primary" })
+
+                            </div>
+                            
+                        </form>
+                    
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</section>

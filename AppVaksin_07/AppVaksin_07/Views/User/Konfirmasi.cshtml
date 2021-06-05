@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AppVaksin_07.ServiceRegistrasiVaksin.VaksinData>
+@{
+    ViewBag.Title = "Konfirmasi";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<section id="home" class="w3l-banner py-5">
+    <div class="banner-image">
+
+    </div>
+    <div class="banner-content">
+        <div class="container pt-5 pb-md-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 pt-md-0 pt-4">
+                    <h4 class="mb-lg-15 mb-3 title"><span class="typed-text"></span><span>Konfirmasi Vaksin yang sudah sampai di Rumah Sakit</span></h4>
+                    @if (Session["vaksin"] != null)
+                    {
+                    <u>@Html.ActionLink("Lihat semua vaksin yang sudah sampai", "vaksinSampai", "User", new { @class = "text-danger" })</u>
+                    }
+                    <div class="mt-md-8 mt-4 mb-lg-0 mb-4">
+                        <table class="table">
+                            <tr>
+
+                                <th>
+                                    No Register
+                                </th>
+                                <th>
+                                    Tanggal Dibuat
+                                </th>
+                                <th>
+                                    <p>Action</p>
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.no_register)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tanggal_dibuat)
+                                    </td>
+                                    <td>
+
+                                       @Html.ActionLink("Sampai", "addVaksinSampai", item, new { @class = "btn btn-success linkdisabled" })
+                                        @*<input type='submit' class="btn btn-success" value='Sampai' @Url.Action("addVaksinSampai", "User",item) onclick='this.disabled = "disabled";' @item />*@
+                                       
+                                        @*<a id="btn_add" href="@Url.Action("addVaksinSampai", "User",item)" onclick='this.disabled = "disabled";' class="btn btn-success">Sampai</a>*@
+                                            @*@Html.ActionLink("Digunakan", "vaksinDigunakan", new { id = item.no_register }, new { @class = "btn btn-info" })*@
+
+</td>
+
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

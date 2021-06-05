@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vaksin_07Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Akun">
+    <Key>
+      <PropertyRef Name="id_akun" />
+    </Key>
+    <Property Name="id_akun" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AkunRoleMappings" Relationship="Self.FK__AkunRoleM__id_ak__286302EC" FromRole="Akun" ToRole="AkunRoleMapping" />
+  </EntityType>
+  <EntityType Name="AkunRoleMapping">
+    <Key>
+      <PropertyRef Name="id_akunrole" />
+    </Key>
+    <Property Name="id_akunrole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_akun" Type="Int32" Nullable="false" />
+    <Property Name="id_role" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Akun" Relationship="Self.FK__AkunRoleM__id_ak__286302EC" FromRole="AkunRoleMapping" ToRole="Akun" />
+    <NavigationProperty Name="RoleMaster" Relationship="Self.FK__AkunRoleM__id_ro__29572725" FromRole="AkunRoleMapping" ToRole="RoleMaster" />
+  </EntityType>
+  <EntityType Name="Data_Pasien">
+    <Key>
+      <PropertyRef Name="id_pasien" />
+    </Key>
+    <Property Name="id_pasien" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="no_rekam_medis" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nama_pasien" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Data_Penduduk">
+    <Key>
+      <PropertyRef Name="id_data" />
+    </Key>
+    <Property Name="id_data" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nik" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Masyarakat" Relationship="Self.FK__Data_Pendud__nik__31EC6D26" FromRole="Data_Penduduk" ToRole="Masyarakat" />
+  </EntityType>
+  <EntityType Name="Data_Vaksin">
+    <Key>
+      <PropertyRef Name="no_register" />
+    </Key>
+    <Property Name="no_register" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tanggal_dibuat" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Masyarakat">
+    <Key>
+      <PropertyRef Name="nik" />
+    </Key>
+    <Property Name="nik" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nama" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="alamat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="jenis_kelamin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Data_Penduduk" Relationship="Self.FK__Data_Pendud__nik__31EC6D26" FromRole="Masyarakat" ToRole="Data_Penduduk" />
+  </EntityType>
+  <EntityType Name="RoleMaster">
+    <Key>
+      <PropertyRef Name="id_role" />
+    </Key>
+    <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama_role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AkunRoleMappings" Relationship="Self.FK__AkunRoleM__id_ro__29572725" FromRole="RoleMaster" ToRole="AkunRoleMapping" />
+  </EntityType>
+  <Association Name="FK__AkunRoleM__id_ak__286302EC">
+    <End Role="Akun" Type="Self.Akun" Multiplicity="1" />
+    <End Role="AkunRoleMapping" Type="Self.AkunRoleMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Akun">
+        <PropertyRef Name="id_akun" />
+      </Principal>
+      <Dependent Role="AkunRoleMapping">
+        <PropertyRef Name="id_akun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AkunRoleM__id_ro__29572725">
+    <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1" />
+    <End Role="AkunRoleMapping" Type="Self.AkunRoleMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleMaster">
+        <PropertyRef Name="id_role" />
+      </Principal>
+      <Dependent Role="AkunRoleMapping">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Data_Pendud__nik__31EC6D26">
+    <End Role="Masyarakat" Type="Self.Masyarakat" Multiplicity="1" />
+    <End Role="Data_Penduduk" Type="Self.Data_Penduduk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masyarakat">
+        <PropertyRef Name="nik" />
+      </Principal>
+      <Dependent Role="Data_Penduduk">
+        <PropertyRef Name="nik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vaksin_07Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Akuns" EntityType="Self.Akun" />
+    <EntitySet Name="AkunRoleMappings" EntityType="Self.AkunRoleMapping" />
+    <EntitySet Name="Data_Pasien" EntityType="Self.Data_Pasien" />
+    <EntitySet Name="Data_Penduduk" EntityType="Self.Data_Penduduk" />
+    <EntitySet Name="Data_Vaksin" EntityType="Self.Data_Vaksin" />
+    <EntitySet Name="Masyarakats" EntityType="Self.Masyarakat" />
+    <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
+    <AssociationSet Name="FK__AkunRoleM__id_ak__286302EC" Association="Self.FK__AkunRoleM__id_ak__286302EC">
+      <End Role="Akun" EntitySet="Akuns" />
+      <End Role="AkunRoleMapping" EntitySet="AkunRoleMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AkunRoleM__id_ro__29572725" Association="Self.FK__AkunRoleM__id_ro__29572725">
+      <End Role="RoleMaster" EntitySet="RoleMasters" />
+      <End Role="AkunRoleMapping" EntitySet="AkunRoleMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Data_Pendud__nik__31EC6D26" Association="Self.FK__Data_Pendud__nik__31EC6D26">
+      <End Role="Masyarakat" EntitySet="Masyarakats" />
+      <End Role="Data_Penduduk" EntitySet="Data_Penduduk" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

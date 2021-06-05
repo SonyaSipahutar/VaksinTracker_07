@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+
+}
+
+
+<!-- banner section -->
+<section id="home" class="w3l-banner py-5">
+    <div class="banner-image">
+
+    </div>
+    <div class="banner-content">
+        <div class="container pt-5 pb-md-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 pt-md-0 pt-4">
+                    <h3 class="mb-lg-4 mb-3 title"><span class="typed-text"></span><span>Welcome User's</span></h3>
+                    <p>
+                        Vaksin Tracker merupakan website yang memungkinkan untuk melakukan penelusuran Vaksin mulai dari Produsen
+                        Vaksin sampai ke pasien. Anda dapat memastikan bahwa vaksin yang akan anda gunakan adalah vaksin yang asli
+                        dengan memeriksa apakah no registrasi vaksin anda sudah terdaftar atau tidak.
+                    </p>
+                    @if (User.IsInRole("Masyarakat"))
+                    {
+                        <div class="mt-md-5 mt-4 mb-lg-0 mb-4">
+                            @Html.ActionLink("Cek Vaksin", "Vaksin", null, new { @class = "btn button-style" })
+                        </div>}
+                    @if (User.IsInRole("Produsen"))
+                    {
+                        <div class="mt-md-5 mt-4 mb-lg-0 mb-4">
+                            @Html.ActionLink("Kelola Vaksin", "Vaksin", null, new { @class = "btn button-style" })
+                        </div>}
+                    @if (User.IsInRole("RumahSakit"))
+                    {
+                        <div class="mt-md-2 mt-4 mb-lg-0 mb-4">
+                            @Html.ActionLink("Konfirmasi", "Konfirmasi", null, new { @class = "btn button-style" })
+                            @Html.ActionLink("Cek Vaksin", "Vaksin", null, new { @class = "btn button-style" })
+                            @Html.ActionLink("Cek NIK", "Nik", null, new { @class = "btn button-style" })
+                        </div>
+                    }
+                    @if (User.IsInRole("BPOM"))
+                    {
+                        <div class="mt-md-5 mt-4 mb-lg-0 mb-4">
+                            @Html.ActionLink("Pantau Vaksin", "Vaksin", null, new { @class = "btn button-style" })
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6 mt-md-0 mt-4">
+                    <img class="img-fluid" src="~/images/bann1.png" alt=" ">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner section -->
+<div class="w3l-content-photo-5 py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 content-photo order-md-first order-last">
+            <a href="#image"><img src="~/images/home-ab.png" class="img-fluid" alt="content-photo"></a>
+        </div>
+        <div class="col-md-6 content-left mb-md-0 mb-5 pl-lg-5 order-md-last order-first">
+            <h3 class="mb-3">Covid-19 dan Vaksin</h3>
+            <p>
+                Salah satu upaya untuk menekan angka kasus COVID-19 yang kian meningkat adalah dengan
+                penyediaan vaksin COVID-19 dari pemerintah. Meski masih dalam tahap uji klinis, keberadaan
+                vaksin ini diharapkan dapat melindungi masyarakat Indonesia dari pandemi.
+            </p>
+            <p class="mt-3">
+                Vaksin COVID-19 yang tengah dikembangkan ada bermacam-macam. Ada vaksin yang
+                memanfaatkan virus Corona yang telah dimatikan atau dilemahkan, ada juga vaksin yang
+                memanfaatkan teknologi rekayasa genetika. Salah satu contoh jenis vaksin tersebut adalah vaksin mRNA.
+                Layaknya obat dan vaksin lainnya, pengembangan vaksin COVID-19 harus melalui tiga tahap uji klinis.
+                Setelah memenuhi ketiga tahap uji klinis tersebut dan dinyatakan efektif serta aman digunakan, vaksin
+                COVID-19 baru bisa mendapatkan izin edar dari Badan Pengawas Obat dan Makanan (BPOM).
+            </p>
+        </div>
+    </div>
+
+</div>
+<!-- //about section -->

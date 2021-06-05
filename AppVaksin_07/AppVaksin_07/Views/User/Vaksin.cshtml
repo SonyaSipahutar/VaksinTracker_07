@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Vaksin";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+<section id="home" class="w3l-banner py-5">
+    <div class="banner-image">
+
+    </div>
+    <div class="banner-content">
+        <div class="container pt-5 pb-md-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 pt-md-0 pt-4">
+                    @if (User.IsInRole("Produsen"))
+                    {
+                        @Html.ActionLink("Tambah Vaksin", "insertVaksin", null, new { @class = "btn button-style" })
+
+                    }
+
+                    @if (User.IsInRole("Masyarakat") || User.IsInRole("RumahSakit"))
+                    {
+
+                        <h2 class="mb-lg-15 mb-3 title"><span class="typed-text"></span><span>Cari Nomor Registrasi Vaksin anda</span></h2>
+
+                        <div class="container">
+                            <p class="lead text-danger">@ViewBag.error</p>
+                            <nav class="navbar navbar-expand-lg stroke px-0">
+                                @using (Html.BeginForm("Vaksin", "User", FormMethod.Get))
+                                {
+                                    <div class="row">
+                                        <div class="col-10">@Html.TextBox("search", null, new { @class = "form-control", @autofocus = "", @required = "", @placeholder = "No register vaksin" })</div>
+                                        <div class="col-1"> <button type="submit" value="Search" class="btn search-btn"><i class="fa fa-search" aria-hidden="true"></i></button></div>
+
+                                    </div>
+
+
+                                }
+                                <!-- //search button -->
+                            </nav>
+                        </div>
+                        <!-- //search button -->
+
+                    }
+                    @if (User.IsInRole("BPOM"))
+                    {
+
+                        <h4 class="mb-lg-15 mb-3 title"><span class="typed-text"></span><span>Vaksin yang sudah dirilis oleh Produsen</span></h4>
+                        if (Session["vaksin"] != null)
+                        {
+                            <div><u>@Html.ActionLink("Lihat Vaksin yang sudah sampai di Rumah Sakit", "vaksinSampai", "User", new { @class = "text-danger" })</u></div>
+                        }
+                            <div><u>@Html.ActionLink("Lihat Vaksin yang sudah digunakan pasien", "vaksinDigunakan", "User", new { @class = "text-danger" })</u></div>
+                        }
+                        <div class="mt-md-8 mt-4 mb-lg-0 mb-4">
+                            <table class="table">
+                                <tr>
+
+                                    <th>
+                                        No Register
+                                    </th>
+                                    <th>
+                                        Tanggal Dibuat
+                                    </th>
+                                    @if (User.IsInRole("Produsen"))
+                                    {
+                                        <th>
+                                            <p>Action</p>
+                                        </th>
+                                    }
+                                </tr>
+
+                                @foreach (var item in ViewBag.vaksin)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.no_register
+                                        </td>
+                                        <td>
+                                            @item.tanggal_dibuat
+                                        </td>
+                                        @if (User.IsInRole("Produsen"))
+                                        {
+                                            <td>
+                                                @Html.ActionLink("Delete", "deleteVaksin", new { id = item.no_register }, new { @class = "btn btn-primary", onclick = "return confirm('Are sure wants to delete?');" })
+
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

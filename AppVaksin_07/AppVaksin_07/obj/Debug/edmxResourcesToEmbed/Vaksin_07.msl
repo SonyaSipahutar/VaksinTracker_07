@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Vaksin_07ModelStoreContainer" CdmEntityContainer="Vaksin_07Entities">
+    <EntitySetMapping Name="Akuns">
+      <EntityTypeMapping TypeName="Vaksin_07Model.Akun">
+        <MappingFragment StoreEntitySet="Akun">
+          <ScalarProperty Name="id_akun" ColumnName="id_akun" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Data_Pasien">
+      <EntityTypeMapping TypeName="Vaksin_07Model.Data_Pasien">
+        <MappingFragment StoreEntitySet="Data_Pasien">
+          <ScalarProperty Name="id_pasien" ColumnName="id_pasien" />
+          <ScalarProperty Name="no_rekam_medis" ColumnName="no_rekam_medis" />
+          <ScalarProperty Name="nama_pasien" ColumnName="nama_pasien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Data_Penduduk">
+      <EntityTypeMapping TypeName="Vaksin_07Model.Data_Penduduk">
+        <MappingFragment StoreEntitySet="Data_Penduduk">
+          <ScalarProperty Name="id_data" ColumnName="id_data" />
+          <ScalarProperty Name="nik" ColumnName="nik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Data_Vaksin">
+      <EntityTypeMapping TypeName="Vaksin_07Model.Data_Vaksin">
+        <MappingFragment StoreEntitySet="Data_Vaksin">
+          <ScalarProperty Name="no_register" ColumnName="no_register" />
+          <ScalarProperty Name="tanggal_dibuat" ColumnName="tanggal_dibuat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masyarakats">
+      <EntityTypeMapping TypeName="Vaksin_07Model.Masyarakat">
+        <MappingFragment StoreEntitySet="Masyarakat">
+          <ScalarProperty Name="nik" ColumnName="nik" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="jenis_kelamin" ColumnName="jenis_kelamin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

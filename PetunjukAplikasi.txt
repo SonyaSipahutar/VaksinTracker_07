@@ -1,0 +1,16 @@
+Cara penggunaan
+1. Buat database dan jalankan semua sintaksnya kecuali sintaks
+yang harus dijalankan ketika service sudah running
+2. Pada semua Service di webconfig pada connection string ubah value Data Source
+yaitu LAPTOP-MUTASAHP menjadi nama sql server anda
+3. Apabila berhasil di jalankan, refresh database anda kemudian jalankan sintaks
+insert untuk tabel yang dibuat oleh WCF
+4. Buka AppVaksin_07, hapus DAO yang sudah ada dan connection string DAO tersebut di 
+WebConfig. Kemudian tambahkan DAO yang baru dengan nama yang sama dan 3 tabel saja
+yaitu Akun, RoleMaster dan AkunRoleMapping
+5. Jalankan aplikasi mvc AppVaksin_07 dengan ke-3 service sudah running
+
+Error handling:
+1. Saat menambah data vaksin, jangan memasukkan no_register yang sudah terdaftar sebelumnya
+2. Apabila saat menginsert data laporan konfirmasi penggunaan vaksin oleh role RumahSakit
+mengalami error, stop service anda kemudian run kembali
